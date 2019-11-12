@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import './App.css';
-import Employees from './components/Employees'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
+import Employees from './components/Employees';
+import Employee from './components/Employee';
 import axios from 'axios';
 
 class App extends Component {
@@ -23,7 +29,6 @@ class App extends Component {
         console.log(res.data);
         const employees = [res.data.results];
         this.setState( {
-          initialState: res.data.results,
           employees: res.data.results,
           loading: false,
           ascending: false
@@ -37,10 +42,10 @@ class App extends Component {
       ascending: !prevState.ascending
     }));
     let temp = this.state.ascending
-    const byName = this.state.employees.sort(function(a, b) {
+    const byAge = this.state.employees.sort(function(a, b) {
       return temp ? b.dob.age - a.dob.age : a.dob.age - b.dob.age;
     });
-    this.setState({ filteredEmployees: byName });
+    this.setState({ filteredEmployees: byAge });
   }
 
   searchFilter(event){
@@ -54,32 +59,39 @@ class App extends Component {
     });
 
     return (
-      <div className="container-fluid">
-        <header className="searchbar-header">
-          <label><h5>Search for employee</h5></label>
-            <input className="form-control mr-sm-2" onChange={this.searchFilter.bind(this)} value={this.state.search} type="search" placeholder="Type here to search" aria-label="Type here to search" />
-        </header>
-        <div className="sorting-employees mb-3">
-          <h5>Sort employees by:</h5>
-          <button type="button" className="btn btn-outline-light btn-sm" onClick={this.sortByAge}> Age <i className="fas fa-sort"></i></button>
-        </div>
-        <div className="container-fluid employee-container">
-        {this.state.loading ? (
-            <div className="row loading-spinner">
-              <div className="col text-center">
-                <div className="spinner-border" role="status">
-                  <span className="sr-only">Loading...</span>
-                </div>
+      <Router>
+        <div className="container-fluid">
+        <Switch>
+            <Route path="/employee" component={Employee}>
+    
+            </Route>
+            <Route path="/">
+              <header className="searchbar-header">
+                <label><h5>Search for employee</h5></label>
+                  <input className="form-control mr-sm-2" onChange={this.searchFilter.bind(this)} value={this.state.search} type="search" placeholder="Type here to search" aria-label="Type here to search" />
+              </header>
+              <div className="sorting-employees mb-3">
+                <h5>Sort employees by:</h5>
+                <button type="button" className="btn btn-outline-light btn-sm" onClick={this.sortByAge}> Age <i className="fas fa-sort"></i></button>
               </div>
-            </div>
-            ) : (
-              <Employees employees={filteredEmployees}/>
-            )
-            }
+              <div className="container-fluid employee-container">
+              {this.state.loading ? (
+                  <div className="row loading-spinner">
+                    <div className="col text-center">
+                      <div className="spinner-border" role="status">
+                        <span className="sr-only">Loading...</span>
+                      </div>
+                    </div>
+                  </div>
+                  ) : (
+                    <Employees employees={filteredEmployees}/>
+                  )
+                  }
+              </div>
+            </Route>
+          </Switch>
         </div>
-  
-      </div>
-  
+      </Router>
   );
 }
 }

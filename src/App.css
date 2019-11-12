@@ -1,3 +1,4 @@
+/* ---General styling --- */
 body {
   background-color: #282c34;
   color: white;
@@ -7,7 +8,20 @@ h1,h2,h3,h4,h5,h6 {
   font-weight: 700;
 }
 
-/* Searchbar / Header */
+hr {
+  border: 0;
+    height: 1px;
+    background: rgb(60, 60, 60);
+    /* background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0)); */
+}
+
+p .fas,
+p .far{
+  margin-right: 10px;
+  color: rgb(60, 60, 60);
+}
+
+/* --- Searchbar / Header --- */
 .searchbar-header {
   margin: 20px 0px;
 }
@@ -15,41 +29,68 @@ h1,h2,h3,h4,h5,h6 {
   background-color: rgba(255, 255, 255, 0.8);
 }
 
-/* Loading spinner */
+/* --- Loading spinner --- */
 .loading-spinner {
   padding-top: 100px;
 }
 
-
-/* Employees */
+/* --- Employees - listview --- */
 .employee-list {
   color: black;
   transition: 0.3s ease-in-out;
 }
+
 .employee-list:hover {
   transform: scale(0.99);
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 
 .employee-data {
   padding: 20px 0 0 0;
 }
+
 .employee-data p {
   margin-bottom: 2px;
 }
+
 .employee-list.row {
   background-color:rgba(255, 255, 255, 0.8);
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
+
 .employee-list.row .col{
   padding-left: 0;
 }
 
 .employee-list img {
   padding: 10px;
+  /* width: 100%; */
 }
 
-.employee-data p .fas,
-.employee-data p .far{
-  color: grey;
+
+
+@media only screen and (max-width: 575px) {
+  .employee-list.row  {
+    text-align: center;
+  }
+  .employee-list img {
+    width: 80%;
+    margin: auto;
+  }
+  .employee-list.row  button{
+    margin-bottom: 30px;
+  }
+}
+/* --- Employee - singleview --- */
+.single-employee.row {
+  background-color:rgba(255, 255, 255, 0.8);
+  padding: 30px;
+  color: black;
+}
+.single-employee p {
+  margin: 0;
+}
+/* since the images are "too small" we need to increase the size here in wait for better pictures */
+.single-employee img {
+  width: 100%;
 }
