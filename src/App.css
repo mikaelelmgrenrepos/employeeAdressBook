@@ -1,0 +1,55 @@
+body {
+  background-color: #282c34;
+  color: white;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+h1,h2,h3,h4,h5,h6 {
+  font-weight: 700;
+}
+
+/* Searchbar / Header */
+.searchbar-header {
+  margin: 20px 0px;
+}
+.form-control {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+/* Loading spinner */
+.loading-spinner {
+  padding-top: 100px;
+}
+
+
+/* Employees */
+.employee-list {
+  color: black;
+  transition: 0.3s ease-in-out;
+}
+.employee-list:hover {
+  transform: scale(0.99);
+  cursor: pointer;
+}
+
+.employee-data {
+  padding: 20px 0 0 0;
+}
+.employee-data p {
+  margin-bottom: 2px;
+}
+.employee-list.row {
+  background-color:rgba(255, 255, 255, 0.8);
+  margin-bottom: 10px;
+}
+.employee-list.row .col{
+  padding-left: 0;
+}
+
+.employee-list img {
+  padding: 10px;
+}
+
+.employee-data p .fas,
+.employee-data p .far{
+  color: grey;
+}
