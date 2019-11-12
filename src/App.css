@@ -28,7 +28,14 @@ p .far{
 .form-control {
   background-color: rgba(255, 255, 255, 0.8);
 }
-
+.sorting-employees button {
+  text-transform: uppercase;
+  padding: 5px 15px 5px 20px;
+  margin-right: 10px;
+}
+.sorting-employees i {
+  margin-left: 10px;
+}
 /* --- Loading spinner --- */
 .loading-spinner {
   padding-top: 100px;

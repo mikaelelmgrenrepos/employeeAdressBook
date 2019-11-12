@@ -21,7 +21,7 @@ export class Employee extends Component{
     },() => { 
       console.log(this.state.employee);
     });
-    
+    window.scrollTo(0, 0);
   }
 
   render() {

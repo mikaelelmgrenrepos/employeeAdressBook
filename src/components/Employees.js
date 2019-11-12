@@ -22,7 +22,14 @@ export class Employees extends Component{
           this.props.employees.map((employee,i) => 
             <div className="employee-list row"  key={i}>
                 <div className="col col-xs-12 col-sm-3 col-lg-3 employee-img">
+                <Link to={{
+                      pathname: '/employee',
+                      state: {
+                        employeeData: employee
+                      }
+                    }}>
                   <img src={employee.picture.large} alt={employee.name.first} />
+                  </Link>
                 </div>
                 <div className="col-xs-12 col-sm-3 col-lg-4 employee-data">
                   <h4>{employee.name.first} {employee.name.last}</h4>
