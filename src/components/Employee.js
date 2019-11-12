@@ -28,7 +28,7 @@ export class Employee extends Component{
       return (
           <div className="employee-single container-fluid mt-3">
             {this.state.loading ? (
-              <div>
+              <React.Fragment>
                 <div className="row loading-spinner">
                   <div className="col text-center">
                     <div className="spinner-border" role="status">
@@ -36,13 +36,13 @@ export class Employee extends Component{
                     </div>
                   </div>
                 </div>
-              </div>
+              </React.Fragment>
               ) : (
               <div className="single-employee row">
-                <div className="col-xs-12 col-md-6 col-lg-4">
+                <div className="col-xs-12 col-md-4 col-lg-4">
                   <img src={this.state.employee.picture.large} alt={this.state.employee.name.first} />
                 </div>
-                <div className="col-xs-12 col-md-6 col-lg-8">
+                <div className="col-xs-12 col-md-8 col-lg-8">
                   <h1>{this.state.employee.name.title}. {this.state.employee.name.first} {this.state.employee.name.last}</h1>
                   <hr/>
                   <div className="row">
@@ -54,7 +54,7 @@ export class Employee extends Component{
                       
                       <h5 className="mt-3">Full adress:</h5>
                       <p>{this.state.employee.name.title}. {this.state.employee.name.first} {this.state.employee.name.last}</p>
-                      <p>{this.state.employee.location.street.name}{this.state.employee.location.street.number}</p>
+                      <p>{this.state.employee.location.street.name} {this.state.employee.location.street.number}</p>
                       <p>{this.state.employee.location.postcode} {this.state.employee.location.city}</p>
                       <p>{this.state.employee.location.country}</p>
                       

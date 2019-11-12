@@ -69,18 +69,7 @@ p .far{
 
 
 
-@media only screen and (max-width: 575px) {
-  .employee-list.row  {
-    text-align: center;
-  }
-  .employee-list img {
-    width: 80%;
-    margin: auto;
-  }
-  .employee-list.row  button{
-    margin-bottom: 30px;
-  }
-}
+
 /* --- Employee - singleview --- */
 .single-employee.row {
   background-color:rgba(255, 255, 255, 0.8);
@@ -93,4 +82,31 @@ p .far{
 /* since the images are "too small" we need to increase the size here in wait for better pictures */
 .single-employee img {
   width: 100%;
+}
+
+/* Media queries */
+@media only screen and (max-width: 575px) {
+  .employee-list.row .col{
+    padding: 0;
+  }
+  .employee-data {
+    padding: 0;
+}
+  .employee-list.row  {
+    text-align: center;
+  }
+  .employee-list img {
+    width: 100%;
+    margin: auto;
+  }
+  .employee-list.row  button{
+    margin-bottom: 30px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .single-employee img {
+    width: 80%;
+    margin: 0% 10% 5% 10%;
+  }
 }

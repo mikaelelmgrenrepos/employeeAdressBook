@@ -24,6 +24,7 @@ class App extends Component {
   
 
   componentDidMount() {
+    // the API-request (always getting from the same seed and page for testing)
     axios.get(`https://randomuser.me/api/?page=3&results=100&seed=abc`)
       .then(res => {
         console.log(res.data);
@@ -37,7 +38,7 @@ class App extends Component {
       })
   }
 
-  sortByAge(){
+  sortByAge(){ // implementing the sortByAge-function
     this.setState(prevState => ({
       ascending: !prevState.ascending
     }));
@@ -48,12 +49,12 @@ class App extends Component {
     this.setState({ filteredEmployees: byAge });
   }
 
-  searchFilter(event){
+  searchFilter(event){ // implementing the searchFilter-function
     this.setState({search: event.target.value.substr(0,20)});
   }
   
   render(){
-
+    // converting the API-request-data to filtered results
     let filteredEmployees = this.state.employees.filter((employee)=> {
         return employee.name.first.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1;
     });
@@ -76,7 +77,8 @@ class App extends Component {
               </div>
               <div className="container-fluid employee-container">
               {this.state.loading ? (
-                  <div className="row loading-spinner">
+                  // if loading data show a spinner
+                  <div className="row loading-spinner"> 
                     <div className="col text-center">
                       <div className="spinner-border" role="status">
                         <span className="sr-only">Loading...</span>
@@ -84,6 +86,7 @@ class App extends Component {
                     </div>
                   </div>
                   ) : (
+                    // if loading is complete - show data
                     <Employees employees={filteredEmployees}/>
                   )
                   }
